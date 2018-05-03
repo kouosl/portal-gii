@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace vendor\kouosl\gii\module;
+namespace kouosl\gii\module;
 
 use yii\gii\CodeFile;
 use yii\helpers\Html;
