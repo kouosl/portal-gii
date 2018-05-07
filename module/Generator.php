@@ -163,6 +163,10 @@ EOD;
             $modulePath . '/messages/tr-TR/'. $this->moduleID .'.php',
             $this->render("messages.php")
         );
+        $files[] = new CodeFile(
+            $modulePath . '/composer.json',
+            $this->render("composer.json")
+        );
         return $files;
     }
 

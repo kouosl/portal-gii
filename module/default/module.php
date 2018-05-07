@@ -14,8 +14,15 @@ $className = substr($className, $pos + 1);
 echo "<?php\n";
 
 ?>
-
 namespace <?= $ns ?>;
+
+use Yii;
+use yii\filters\auth\CompositeAuth;
+use yii\filters\auth\HttpBasicAuth;
+use yii\filters\auth\HttpBearerAuth;
+use yii\filters\auth\QueryParamAuth;
+use yii\web\HttpException;
+
 
 /**
  * <?= $generator->moduleID ?> module definition class
@@ -69,16 +76,16 @@ class Module extends \yii\base\Module
         Yii::$app->i18n->translations['site/*'] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
-            'basePath' => <?='@kouosl/'. $generator->moduleID .'/messages' ?>,
+            'basePath' => '<?=( string )'@kouosl/'. $generator->moduleID .'/messages' ?>',
             'fileMap' => [
-                <?=  $generator->moduleID . '/' . $generator->moduleID  ?> => <?=  $generator->moduleID . '.php' ?>,
+                '<?=( string ) $generator->moduleID . '/' . $generator->moduleID  ?>' => '<?=( string ) $generator->moduleID . '.php' ?>',
             ],
         ];
     }
 
     public static function t($category, $message, $params = [], $language = null)
     {
-        return Yii::t($generator->moduleID . $category, $message, $params, $language);
+        return Yii::t('<?=( string ) $generator->moduleID ?>/'. $category, $message, $params, $language; );
     }
 
     public static function initRules(){
@@ -87,7 +94,7 @@ class Module extends \yii\base\Module
             [
                 'class' => 'yii\rest\UrlRule',
                 'controller' => [
-                   <?= $generator->moduleID . '/' . $generator->moduleID ?>,
+                   '<?= (string) $generator->moduleID . '/' . $generator->moduleID;  ?>s',
                 ],
                 'tokens' => [
                     '{id}' => '<id:\\w+>'
