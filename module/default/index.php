@@ -1,8 +1,5 @@
+<?= '<?= $this->title = \'Modül çalışıyor.\'; ?>' ?>
 
-<?php
-/* @var $this yii\web\View */
-$this->title = 'Modül çalışıyor.';
-?>
 <div class="site-index">
 
     <div class="jumbotron">

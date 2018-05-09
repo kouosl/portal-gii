@@ -92,14 +92,17 @@ class Generator extends \yii\gii\Generator
 
         $output = <<<EOD
 <p>The module has been generated successfully.</p>
-<p>To access the module, you need to add this to your application configuration:</p>
+<p>To access the module, you need to add this to your application configuration:(
+    For frontend : \\frontend\\config\\main.php
+    For backend : \\backend\\config\\main.php
+)</p>
 EOD;
         $code = <<<EOD
 <?php
     ......
     'modules' => [
         '{$this->moduleID}' => [
-            'class' => '{'kouosl\\'.$this->moduleID.'\Module'}',
+            'class' => 'kouosl\\$this->moduleID\Module',
         ],
     ],
     ......

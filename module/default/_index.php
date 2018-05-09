@@ -1,4 +1,7 @@
 <?php
+ echo "<?php\n"; 
+ 
+ ?>
 use kouosl\theme\helpers\Html;
 use kouosl\theme\widgets\Portlet;
 

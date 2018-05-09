@@ -21,6 +21,6 @@ class DefaultController extends \kouosl\base\controllers\<?= $name ?>\BaseContro
      */
     public function actionIndex()
     {
-        echo "actionIndex";
+        return $this->render('_index');
     }
 }
