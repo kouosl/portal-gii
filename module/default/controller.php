@@ -7,13 +7,13 @@
 /* @var $generator yii\gii\generators\module\Generator */
 
 echo "<?php\n";
-?>namespace <?= $generator->getControllerNamespace() ?>\frontend;
+?>namespace kouosl\<?= $generator->moduleID ?>\controllers\<?= $name ?>;
 
 
 /**
  * Default controller for the `<?= $generator->moduleID ?>` module
  */
-class DefaultController extends \kouosl\base\controllers\frontend\BaseController
+class DefaultController extends \kouosl\base\controllers\<?= $name ?>\BaseController
 {
     /**
      * Renders the index view for the module

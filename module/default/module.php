@@ -14,7 +14,7 @@ $className = substr($className, $pos + 1);
 echo "<?php\n";
 
 ?>
-namespace <?= $ns ?>;
+namespace kouosl\<?= $generator->moduleID ?>;
 
 use Yii;
 use yii\filters\auth\CompositeAuth;
@@ -27,7 +27,7 @@ use yii\web\HttpException;
 /**
  * <?= $generator->moduleID ?> module definition class
  */
-class Module extends \yii\base\Module
+class Module extends \kouosl\base\Module
 {
     public $controllerNamespace = '';
 
@@ -85,7 +85,7 @@ class Module extends \yii\base\Module
 
     public static function t($category, $message, $params = [], $language = null)
     {
-        return Yii::t('<?=( string ) $generator->moduleID ?>/'. $category, $message, $params, $language; );
+        return Yii::t('<?=( string ) $generator->moduleID ?>/'. $category, $message, $params, $language);
     }
 
     public static function initRules(){

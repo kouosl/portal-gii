@@ -49,8 +49,8 @@ class Generator extends \yii\gii\Generator
     public function rules()
     {
         return array_merge(parent::rules(), [
-            [['moduleID', 'moduleClass'], 'filter', 'filter' => 'trim'],
-            [['moduleID', 'moduleClass'], 'required'],
+            [['moduleID'], 'filter', 'filter' => 'trim'],
+            [['moduleID'], 'required'],
             [['moduleID'], 'match', 'pattern' => '/^[\w\\-]+$/', 'message' => 'Only word characters and dashes are allowed.'],
             [['moduleClass'], 'match', 'pattern' => '/^[\w\\\\]*$/', 'message' => 'Only word characters and backslashes are allowed.'],
             [['moduleClass'], 'validateModuleClass'],
@@ -63,7 +63,7 @@ class Generator extends \yii\gii\Generator
     public function attributeLabels()
     {
         return [
-            'moduleID' => 'Module ID',
+            'moduleID' => 'Module Name',
             'moduleClass' => 'Module Class',
         ];
     }
@@ -99,7 +99,7 @@ EOD;
     ......
     'modules' => [
         '{$this->moduleID}' => [
-            'class' => '{$this->moduleClass}',
+            'class' => '{'kouosl\\'.$this->moduleID.'\Module'}',
         ],
     ],
     ......
@@ -129,19 +129,19 @@ EOD;
         );
         $files[] = new CodeFile(
             $modulePath . '/controllers/api/DefaultController.php',
-            $this->render("controller.php")
+            $this->render("controller.php",['name' => 'api'])
         );
         $files[] = new CodeFile(
             $modulePath . '/controllers/backend/DefaultController.php',
-            $this->render("controller.php")
+            $this->render("controller.php",['name' => 'backend'])
         );
         $files[] = new CodeFile(
             $modulePath . '/controllers/frontend/DefaultController.php',
-            $this->render("controller.php")
+            $this->render("controller.php",['name' => 'frontend'])
         );
         $files[] = new CodeFile(
             $modulePath . '/controllers/console/DefaultController.php',
-            $this->render("controller.php")
+            $this->render("controller.php",['name' => 'console'])
         );
         $files[] = new CodeFile(
             $modulePath . '/views/backend/default/_index.php',
@@ -161,11 +161,11 @@ EOD;
         );
         $files[] = new CodeFile(
             $modulePath . '/messages/tr-TR/'. $this->moduleID .'.php',
-            $this->render("messages.php")
+            $this->render("messages.php",['moduleClass' =>  $this->moduleClass])
         );
         $files[] = new CodeFile(
             $modulePath . '/composer.json',
-            $this->render("composer.json")
+            $this->render("composer.php")
         );
         return $files;
     }
@@ -175,6 +175,7 @@ EOD;
      */
     public function validateModuleClass()
     {
+        $this->moduleClass = 'vendor\kouosl\\'.$this->moduleID.'\Module';
         if (strpos($this->moduleClass, '\\') === false || Yii::getAlias('@' . str_replace('\\', '/', $this->moduleClass), false) === false) {
             $this->addError('moduleClass', 'Module class must be properly namespaced.');
         }
@@ -188,6 +189,8 @@ EOD;
      */
     public function getModulePath()
     {
+        $this->moduleClass = 'vendor\kouosl\\'.$this->moduleID.'\Module';
+
         return Yii::getAlias('@' . str_replace('\\', '/', substr($this->moduleClass, 0, strrpos($this->moduleClass, '\\'))));
     }
 
@@ -196,6 +199,8 @@ EOD;
      */
     public function getControllerNamespace()
     {
+        $this->moduleClass = 'vendor\kouosl\\'.$this->moduleID.'\Module';
+
         return substr($this->moduleClass, 0, strrpos($this->moduleClass, '\\')) . '\controllers';
     }
 }

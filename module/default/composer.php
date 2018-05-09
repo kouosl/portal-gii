@@ -1,14 +1,10 @@
 {
-    "name": "kouosl/test",
+    "name": "kouosl/<?= $generator->moduleID ?>",
     "description": "Sample module for KOUOSL PORTAL",
     "type": "yii2-extension",
-    "keywords": ["yii2", "yii 2", "samples", "sample", "module", "modules"],
+    "keywords": ["yii2", "yii 2", "<?= $generator->moduleID ?>", "module", "modules"],
     "license": "BSD-3-Clause",
     "authors": [
-        {
-            "name": "İbrahim Aşık",
-            "email": "info@kouosl.org"
-        },
         {
             "name": "Ekrem HATİPOĞLU",
             "email": "ekrem.hatipoglu@outlook.com"
@@ -16,7 +12,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "kouosl\\test\\": ""
+            "kouosl\\<?= $generator->moduleID ?>\\": ""
         }
     }
 }
