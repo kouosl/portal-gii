@@ -1,5 +1,5 @@
 {
-    "name": "kouosl/<?= $generator->moduleID ?>",
+    "name": "kouosl/portal-<?= $generator->moduleID ?>",
     "description": "Sample module for KOUOSL PORTAL",
     "type": "yii2-extension",
     "keywords": ["yii2", "yii 2", "<?= $generator->moduleID ?>", "module", "modules"],
