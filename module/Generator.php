@@ -192,7 +192,6 @@ EOD;
      */
     public function getModulePath()
     {
-        
         $this->moduleClass = 'vendor\kouosl\\'.'portal-'.$this->moduleID.'\Module';
 
         return Yii::getAlias('@' . str_replace('\\', '/', substr($this->moduleClass, 0, strrpos($this->moduleClass, '\\'))));
