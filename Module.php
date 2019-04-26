@@ -9,23 +9,11 @@ use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 use yii\web\HttpException;
 
-/**
- * Module [[base]]
- * Yii2 base module.
- */
-class Module extends \yii\base\Module
-{
+class Module extends \yii\base\Module{
     public $controllerNamespace = '';
-
     public $namespace;
 
-    public function init()
-    {
-
-        parent::init();
-
-       
+    public function init(){
+        parent::init();   
     }
-
 }
-
